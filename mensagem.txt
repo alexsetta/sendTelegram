@@ -1,0 +1,8 @@
+sendTelegram.exe "Situação do VPost - Últimos lotes|Descrição  	DataZ 
+1	Imagem verificada mais antiga  	2020-06-17 07:29:11.18  
+2	Última assinatura digital  	2020-06-18 07:29:26.363  
+3	Última consulta SRO  	2020-06-18 07:29:20.797  
+4	Última imagem convertida  	2020-06-18 07:29:33.95  
+5	Último lote capturado  	2020-06-18 07:27:01.777  
+6	Último lote devolvido  	2020-06-18 07:29:32.0  
+7	Último lote produzido  	2020-06-17 14:00:52.573 " 

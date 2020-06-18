@@ -7,24 +7,31 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 	"strconv"
 	"strings"
 )
 
 type Config struct {
-	token   string
-	chatID  int64
-	message string
+	token  string
+	chatID int64
 }
 
 // The main funtion starts our server on port 3000
 func main() {
-	b, err := ioutil.ReadFile("./config.txt")
-	if err != nil {
-		log.Fatal(err)
+	if len(os.Args) != 3 {
+		log.Fatal("parâmetros inválidos")
 	}
+	base := os.Args[1]
+	file := os.Args[2]
+
+	b, err := ioutil.ReadFile(base + "/sendTelegram.cfg")
+	if err != nil {
+		log.Fatal(err)se
+	}
+
 	lido := strings.Split(string(b), "|")
-	if len(lido) != 3 {
+	if len(lido) != 2 {
 		log.Fatal("arquivo de configuração inválido")
 	}
 
@@ -32,14 +39,16 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	c := Config{lido[0], i, lido[2]}
+	c := Config{lido[0], i}
 
-	b, err = ioutil.ReadFile(c.message)
+	b, err = ioutil.ReadFile(file)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	sendMessage(c, string(b))
+	if err := sendMessage(c, string(b)); err != nil {
+		log.Fatal(err)
+	}
 }
 
 // Create a struct to conform to the JSON body of the send message request
