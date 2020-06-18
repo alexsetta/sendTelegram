@@ -12,8 +12,9 @@ import (
 )
 
 type Config struct {
-	token  string
-	chatID int64
+	token   string
+	chatID  int64
+	message string
 }
 
 // The main funtion starts our server on port 3000
@@ -23,7 +24,7 @@ func main() {
 		log.Fatal(err)
 	}
 	lido := strings.Split(string(b), "|")
-	if len(lido) != 2 {
+	if len(lido) != 3 {
 		log.Fatal("arquivo de configuração inválido")
 	}
 
@@ -31,9 +32,9 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	c := Config{lido[0], i}
+	c := Config{lido[0], i, lido[2]}
 
-	b, err = ioutil.ReadFile("./mensagem.txt")
+	b, err = ioutil.ReadFile(c.message)
 	if err != nil {
 		log.Fatal(err)
 	}
