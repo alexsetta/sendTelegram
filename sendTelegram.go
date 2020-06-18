@@ -27,7 +27,7 @@ func main() {
 
 	b, err := ioutil.ReadFile(base + "/sendTelegram.cfg")
 	if err != nil {
-		log.Fatal(err)se
+		log.Fatal(err)
 	}
 
 	lido := strings.Split(string(b), "|")
